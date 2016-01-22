@@ -11,6 +11,28 @@ var configFile,
     scriptArguments,
     totalActionsCounter;
 
+
+function joinUrlElements() {
+    var isAbsolute = false,
+        regex = new RegExp('^\\/|\\/$','g'),
+        paths = Array.prototype.slice.call(arguments),
+        url = '';
+
+    if (paths[0][0] === '/') {
+        isAbsolute = true;
+    }
+
+    url = paths.map(function(element){
+        return element.replace(regex,"");
+    }).join('/');
+
+    if (isAbsolute) {
+        url = '/' + url;
+    }
+
+    return url;
+}
+
 function takeAScreenshot(address, output, size, zoom, timer) {
     var page = webpage.create();
 
@@ -64,12 +86,12 @@ function launchScreenshotsSeries(conf) {
         currentDevice = devices[i];
         size          = currentDevice.size;
         zoom          = currentDevice.pixelDensity;
-        outputFolder  = baseFolder + '/' + currentDevice.name;
+        outputFolder  = joinUrlElements(baseFolder, currentDevice.name);
 
         for (var j = viewsList.length - 1; j >= 0; j--) {
             currentView = viewsList[j];
-            outputPath  = outputFolder + '/' + currentView.name + '.png';
-            fullUrl     = baseUrl + currentView.url;
+            outputPath  = joinUrlElements(outputFolder, currentView.name) + '.png';
+            fullUrl     = joinUrlElements(baseUrl, currentView.url);
             takeAScreenshot(fullUrl, outputPath, size, zoom, timer);
         }
     }
@@ -78,7 +100,6 @@ function launchScreenshotsSeries(conf) {
 }
 
 scriptArguments = system.args;
-
 
 if (scriptArguments.length !== 2) {
     console.log('Usage: screenshots.js path-to-config-file');
