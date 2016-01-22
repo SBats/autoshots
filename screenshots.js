@@ -13,10 +13,10 @@ var configFile,
 
 
 function joinUrlElements() {
-    var isAbsolute = false,
-        regex = new RegExp('^\\/|\\/$','g'),
-        paths = Array.prototype.slice.call(arguments),
-        url = '';
+    var isAbsolute = false;
+    var regex      = new RegExp('^\\/|\\/$','g');
+    var paths      = Array.prototype.slice.call(arguments);
+    var url        = '';
 
     if (paths[0][0] === '/') {
         isAbsolute = true;
@@ -79,7 +79,7 @@ function launchScreenshotsSeries(conf) {
     var viewsList  = conf.viewsList;
     var timer      = conf.pageLoadingTimer;
 
-    totalActionsCounter = 0;
+    totalActionsCounter  = 0;
     currentActionCounter = 0;
 
     for (var i = devices.length - 1; i >= 0; i--) {
