@@ -1,0 +1,25 @@
+{
+  "name": "autoshots",
+  "version": "1.0.0",
+  "description": "Screenshots automation for web applications with PhantomJS",
+  "main": "screenshots.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "shots": "phantomjs --web-security=false screenshots.js config.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/makinacorpus/autoshots.git"
+  },
+  "keywords": [
+    "screenshots",
+    "automation",
+    "web-app"
+  ],
+  "author": "Sbats",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/makinacorpus/autoshots/issues"
+  },
+  "homepage": "https://github.com/makinacorpus/autoshots#readme"
+}
