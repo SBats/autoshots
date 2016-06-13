@@ -6,11 +6,11 @@ If you don't have it, this application will install **PhantomJS** thanks to the 
 
 ## How to use it
 You will need to:
-- duplicate `example.config.json` and rename it `config.json`
+- run `npm install`
 - update `config.json` with the settings you want
-- run `npm run shots`
+- run `npm start`
 
-Then you will find the screenshots in the specified output folder.
+Then you will find the screenshots in `render/` + the specified output folder in config.
 
 ## Settings details
 ### Main settings
@@ -43,3 +43,8 @@ Parameter     | Type      | Description
 --------------|-----------|------------------
 width         | Int       | Width of the device.
 height        | Int       | Height of the device.
+
+
+## Available tasks
+* `npm run init` will copy `example.config.json` to `config.json` (automaticaly launched at post-install)
+* `npm start` or `npm run shots` will launch the screenshots automation
