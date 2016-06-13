@@ -1,5 +1,5 @@
 {
-    "baseUrl": "http://desired-url/",
+    "baseUrl": "http://desired-url.com/",
     "baseFolder": "test",
     "pageLoadingTimer": 2000,
     "viewsList": [
@@ -17,6 +17,22 @@
         }
     ],
     "devices": [
+        {
+            "name": "galaxyTab",
+            "size": {
+                "width": 600,
+                "height": 1024
+            },
+            "pixelDensity": 1
+        },
+        {
+            "name": "galaxyS3",
+            "size": {
+                "width": 720,
+                "height": 1280
+            },
+            "pixelDensity": 2
+        },
         {
             "name": "iphone4",
             "size": {
