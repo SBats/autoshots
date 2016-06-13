@@ -73,7 +73,7 @@ function launchScreenshotsSeries(conf) {
         size,
         zoom;
 
-    var baseFolder = conf.baseFolder;
+    var baseFolder = 'render/' + conf.baseFolder;
     var baseUrl    = conf.baseUrl;
     var devices    = conf.devices;
     var viewsList  = conf.viewsList;

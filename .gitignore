@@ -1,3 +1,7 @@
-nodes_modules
+node_modules
 config.json
 npm-debug.log
+
+/render/*
+
+!.gitkeep
