@@ -7,6 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "shots": "phantomjs --web-security=false screenshots.js config.json"
   },
+  "dependencies": {
+    "phantomjs-prebuilt": "^2.1.7"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/makinacorpus/autoshots.git"

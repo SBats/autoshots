@@ -1,12 +1,8 @@
 # Autoshots
 Screenshots automation for web applications with PhantomJS
 
-## Requirements
-You need to have phantomJS 2 installed. It's not possible to load it via npm for the moment so you'll have to install it manualy.
-
-If you are on Windows or OSX, there are installation [instructions here](http://phantomjs.org/download.html).
-
-If you are on Linux, it depends of your distribution but there are no official binaries. You might need to [build it yourself](http://phantomjs.org/build.html).
+## Disclaimer
+If you don't have it, this application will install **PhantomJS** thanks to the usefull [phantomjs-prebuilt](https://www.npmjs.com/package/phantomjs-prebuilt) package and make it available in your path.
 
 ## How to use it
 You will need to:
