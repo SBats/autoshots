@@ -13,107 +13,107 @@ var configFile,
 
 
 function joinUrlElements() {
-    var isAbsolute = false;
-    var regex      = new RegExp('^\\/|\\/$','g');
-    var paths      = Array.prototype.slice.call(arguments);
-    var url        = '';
+  var isAbsolute = false;
+  var regex      = new RegExp('^\\/|\\/$','g');
+  var paths      = Array.prototype.slice.call(arguments);
+  var url        = '';
 
-    if (paths[0][0] === '/') {
-        isAbsolute = true;
-    }
+  if (paths[0][0] === '/') {
+    isAbsolute = true;
+  }
 
-    url = paths.map(function(element){
-        return element.replace(regex,"");
-    }).join('/');
+  url = paths.map(function(element){
+    return element.replace(regex,"");
+  }).join('/');
 
-    if (isAbsolute) {
-        url = '/' + url;
-    }
+  if (isAbsolute) {
+    url = '/' + url;
+  }
 
-    return url;
+  return url;
 }
 
 function takeAScreenshot(address, output, size, zoom, timer) {
-    var page = webpage.create();
+  var page = webpage.create();
 
-    totalActionsCounter++;
+  totalActionsCounter++;
 
-    console.log('started ' + output + ' screenshot');
+  console.log('started ' + output + ' screenshot');
 
-    page.viewportSize = { width: size.width, height: size.height };
-    page.zoomFactor   = zoom;
+  page.viewportSize = { width: size.width, height: size.height };
+  page.zoomFactor   = zoom;
 
-    page.open(address, function (status) {
-        if (status !== 'success') {
-            console.log('Error: Unable to load the address ' + address);
-            return false;
-        } else {
-            window.setTimeout(function () {
-                page.render(output);
-                console.log('finished ' + output + ' screenshot');
-                setTimeout(function() {
-                    page.close();
-                    currentActionCounter++;
-                    if (currentActionCounter === totalActionsCounter) {
-                        phantom.exit();
-                    }
-                }, 1);
-                return true;
-            }, timer);
-        }
-    });
+  page.open(address, function (status) {
+    if (status !== 'success') {
+      console.log('Error: Unable to load the address ' + address);
+      return false;
+    } else {
+      window.setTimeout(function () {
+        page.render(output);
+        console.log('finished ' + output + ' screenshot');
+        setTimeout(function() {
+          page.close();
+          currentActionCounter++;
+          if (currentActionCounter === totalActionsCounter) {
+            phantom.exit();
+          }
+        }, 1);
+        return true;
+      }, timer);
+    }
+  });
 }
 
 function launchScreenshotsSeries(conf) {
-    var currentDevice,
-        currentView,
-        fullUrl,
-        outputFolder,
-        outputPath,
-        size,
-        zoom;
+  var currentDevice,
+  currentView,
+  fullUrl,
+  outputFolder,
+  outputPath,
+  size,
+  zoom;
 
-    var baseFolder = 'render/' + conf.baseFolder;
-    var baseUrl    = conf.baseUrl;
-    var devices    = conf.devices;
-    var viewsList  = conf.viewsList;
-    var timer      = conf.pageLoadingTimer;
+  var baseFolder = 'render/' + conf.baseFolder;
+  var baseUrl    = conf.baseUrl;
+  var devices    = conf.devices;
+  var viewsList  = conf.viewsList;
+  var timer      = conf.pageLoadingTimer;
 
-    totalActionsCounter  = 0;
-    currentActionCounter = 0;
+  totalActionsCounter  = 0;
+  currentActionCounter = 0;
 
-    for (var i = devices.length - 1; i >= 0; i--) {
-        currentDevice = devices[i];
-        size          = currentDevice.size;
-        zoom          = currentDevice.pixelDensity;
-        outputFolder  = joinUrlElements(baseFolder, currentDevice.name);
+  for (var i = devices.length - 1; i >= 0; i--) {
+    currentDevice = devices[i];
+    size          = currentDevice.size;
+    zoom          = currentDevice.pixelDensity;
+    outputFolder  = joinUrlElements(baseFolder, currentDevice.name);
 
-        for (var j = viewsList.length - 1; j >= 0; j--) {
-            currentView = viewsList[j];
-            outputPath  = joinUrlElements(outputFolder, currentView.name) + '.png';
-            fullUrl     = joinUrlElements(baseUrl, currentView.url);
-            takeAScreenshot(fullUrl, outputPath, size, zoom, timer);
-        }
+    for (var j = viewsList.length - 1; j >= 0; j--) {
+      currentView = viewsList[j];
+      outputPath  = joinUrlElements(outputFolder, currentView.name) + '.png';
+      fullUrl     = joinUrlElements(baseUrl, currentView.url);
+      takeAScreenshot(fullUrl, outputPath, size, zoom, timer);
     }
+  }
 
-    return true;
+  return true;
 }
 
 scriptArguments = system.args;
 
 if (scriptArguments.length !== 2) {
-    console.log('Usage: screenshots.js path-to-config-file');
-    phantom.exit();
+  console.log('Usage: screenshots.js path-to-config-file');
+  phantom.exit();
 } else {
 
-    // system.args contains the current script file name so we get directly the second argument
-    configPath = scriptArguments[1];
+  // system.args contains the current script file name so we get directly the second argument
+  configPath = scriptArguments[1];
 
-    if (!fs.exists(configPath)) {
-        console.log('Error: couldn\'t find config file at ' + configPath);
-    } else {
-        configFile = JSON.parse(fs.read(configPath));
-        launchScreenshotsSeries(configFile);
-    }
+  if (!fs.exists(configPath)) {
+    console.log('Error: couldn\'t find config file at ' + configPath);
+  } else {
+    configFile = JSON.parse(fs.read(configPath));
+    launchScreenshotsSeries(configFile);
+  }
 
 }

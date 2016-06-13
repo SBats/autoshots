@@ -1,77 +1,77 @@
 {
-    "baseUrl": "http://desired-url.com/",
-    "baseFolder": "test",
-    "pageLoadingTimer": 2000,
-    "viewsList": [
-        {
-            "name": "home",
-            "url": ""
-        },
-        {
-            "name": "map",
-            "url": "map"
-        },
-        {
-            "name": "detail",
-            "url": "map/detail"
-        }
-    ],
-    "devices": [
-        {
-            "name": "galaxyTab",
-            "size": {
-                "width": 600,
-                "height": 1024
-            },
-            "pixelDensity": 1
-        },
-        {
-            "name": "galaxyS3",
-            "size": {
-                "width": 720,
-                "height": 1280
-            },
-            "pixelDensity": 2
-        },
-        {
-            "name": "iphone4",
-            "size": {
-                "width": 640,
-                "height": 920
-            },
-            "pixelDensity": 2
-        },
-        {
-            "name": "iphone5",
-            "size": {
-                "width": 640,
-                "height": 1096
-            },
-            "pixelDensity": 2
-        },
-        {
-            "name": "iphone6",
-            "size": {
-                "width": 750,
-                "height": 1334
-            },
-            "pixelDensity": 2
-        },
-        {
-            "name": "iphone6plus",
-            "size": {
-                "width": 1242,
-                "height": 2208
-            },
-            "pixelDensity": 3
-        },
-        {
-            "name": "ipad",
-            "size": {
-                "width": 1536,
-                "height": 2008
-            },
-            "pixelDensity": 2
-        }
-    ]
+  "baseUrl": "http://desired-url.com/",
+  "baseFolder": "test",
+  "pageLoadingTimer": 2000,
+  "viewsList": [
+    {
+      "name": "home",
+      "url": ""
+    },
+    {
+      "name": "map",
+      "url": "map"
+    },
+    {
+      "name": "detail",
+      "url": "map/detail"
+    }
+  ],
+  "devices": [
+    {
+      "name": "galaxyTab",
+      "size": {
+        "width": 600,
+        "height": 1024
+      },
+      "pixelDensity": 1
+    },
+    {
+      "name": "galaxyS3",
+      "size": {
+        "width": 720,
+        "height": 1280
+      },
+      "pixelDensity": 2
+    },
+    {
+      "name": "iphone4",
+      "size": {
+        "width": 640,
+        "height": 920
+      },
+      "pixelDensity": 2
+    },
+    {
+      "name": "iphone5",
+      "size": {
+        "width": 640,
+        "height": 1096
+      },
+      "pixelDensity": 2
+    },
+    {
+      "name": "iphone6",
+      "size": {
+        "width": 750,
+        "height": 1334
+      },
+      "pixelDensity": 2
+    },
+    {
+      "name": "iphone6plus",
+      "size": {
+        "width": 1242,
+        "height": 2208
+      },
+      "pixelDensity": 3
+    },
+    {
+      "name": "ipad",
+      "size": {
+        "width": 1536,
+        "height": 2008
+      },
+      "pixelDensity": 2
+    }
+  ]
 }
