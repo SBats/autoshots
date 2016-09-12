@@ -72,6 +72,14 @@
         "height": 2008
       },
       "pixelDensity": 2
+    },
+    {
+      "name": "ipadPro",
+      "size": {
+        "width": 2048,
+        "height": 2732
+      },
+      "pixelDensity": 2
     }
   ]
 }
